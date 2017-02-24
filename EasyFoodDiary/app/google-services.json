@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1077264962107",
+    "firebase_url": "https://easyfooddiary.firebaseio.com",
+    "project_id": "easyfooddiary",
+    "storage_bucket": "easyfooddiary.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077264962107:android:a527e114f30bb050",
+        "android_client_info": {
+          "package_name": "cis350.upenn.edu.easyfooddiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077264962107-vegr54k679t3mdad7efuddn967ol44cv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cis350.upenn.edu.easyfooddiary",
+            "certificate_hash": "8a42ac5e883ed5233676d35027852a0d02394609"
+          }
+        },
+        {
+          "client_id": "1077264962107-b3t5e9tlafd0d639uhto9jo170o3g5ui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJNr61ocHxoV6H0uOGYPvySv0FemdBCp8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077264962107-b3t5e9tlafd0d639uhto9jo170o3g5ui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
