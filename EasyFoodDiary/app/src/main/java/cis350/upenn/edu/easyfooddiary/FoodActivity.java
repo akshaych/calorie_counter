@@ -105,15 +105,14 @@ public class FoodActivity extends AppCompatActivity {
             dateInfo.put(2, lunch);
             dateInfo.put(3, dinner);
             dateInfo.put(4, snack);
+            myref_date.setValue(dateInfo.toString());
+            Toast.makeText(foodView.getContext(),
+                    "Saved", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this, CalendarActivity.class);
+            startActivity(i);
         } catch (JSONException e) {
             Toast.makeText(FoodActivity.this, "Error2", Toast.LENGTH_SHORT).show();
         }
-        myref_date.setValue(dateInfo);
-
-        Toast.makeText(foodView.getContext(),
-                "Saved", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(this, CalendarActivity.class);
-        startActivity(i);
     }
 
 }
