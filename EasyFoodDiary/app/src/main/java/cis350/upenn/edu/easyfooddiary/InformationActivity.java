@@ -14,6 +14,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+
+
 public class InformationActivity extends AppCompatActivity {
 
     protected InformationView informationView;
@@ -105,15 +109,21 @@ public class InformationActivity extends AppCompatActivity {
         editText_goal = (EditText) findViewById(R.id.Goal);
         goal = editText_goal.getText().toString();
 
-        myref_name.setValue(namer);
-        myref_date.setValue(birthdate);
-        myref_goal.setValue(goal);
+        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
+        try {
+            df.parse(birthdate);
+            myref_name.setValue(namer);
+            myref_date.setValue(birthdate);
+            myref_goal.setValue(goal);
 
-
-        Toast.makeText(informationView.getContext(),
-                "Your information has been saved", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+            Toast.makeText(informationView.getContext(),
+                    "Your information has been saved", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+        } catch (ParseException e) {
+            Toast.makeText(informationView.getContext(),
+                    "Please enter valid date format", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

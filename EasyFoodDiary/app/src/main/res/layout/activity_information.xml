@@ -49,7 +49,7 @@
         android:inputType="date"
         android:ems="10"
         android:id="@+id/Date"
-        android:hint="Date"
+        android:hint="Date (MM/DD/YYYY)"
         android:text=""
         android:layout_below="@+id/Name"
         android:layout_alignParentLeft="true"
