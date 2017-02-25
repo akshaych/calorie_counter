@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "919551523460-v6fej8pk5tvdtdsfl7og2uja6tkn3phi.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "cis350.upenn.edu.easyfooddiary",
-            "certificate_hash": "8a42ac5e883ed5233676d35027852a0d02394609"
-          }
-        },
-        {
           "client_id": "919551523460-jg06do0qpva37q6g0btgato6t0divt6s.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
