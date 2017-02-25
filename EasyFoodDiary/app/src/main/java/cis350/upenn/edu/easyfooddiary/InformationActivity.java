@@ -29,6 +29,63 @@ public class InformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
         informationView = new InformationView(this);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        DatabaseReference myref_name = database.getReference("name");
+        myref_name.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                editText_name = (EditText) findViewById(R.id.Name);
+                editText_name.setText(value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("tag", "Failed to read value.", error.toException());
+            }
+        });
+
+        DatabaseReference myref_date = database.getReference("date");
+        myref_date.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                editText_name = (EditText) findViewById(R.id.Date);
+                editText_name.setText(value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("tag", "Failed to read value.", error.toException());
+            }
+        });
+
+        DatabaseReference myref_goal = database.getReference("goal");
+        myref_goal.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                editText_name = (EditText) findViewById(R.id.Goal);
+                editText_name.setText(value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("tag", "Failed to read value.", error.toException());
+            }
+        });
+
     }
 
     protected void onClick(View view) {
@@ -47,22 +104,6 @@ public class InformationActivity extends AppCompatActivity {
 
         editText_goal = (EditText) findViewById(R.id.Goal);
         goal = editText_goal.getText().toString();
-
-        myref_name.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                Log.v("tag", "Value is: " + value);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w("tag", "Failed to read value.", error.toException());
-            }
-        });
 
         myref_name.setValue(namer);
         myref_date.setValue(birthdate);
