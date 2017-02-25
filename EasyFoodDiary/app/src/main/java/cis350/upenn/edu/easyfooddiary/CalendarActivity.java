@@ -3,8 +3,10 @@ package cis350.upenn.edu.easyfooddiary;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -18,15 +20,15 @@ public class CalendarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-        CalendarView view = new CalendarView(this);
+        CalendarView view = (CalendarView) findViewById(R.id.calendar);
         long date = Calendar.getInstance().getTimeInMillis();
         view.setDate(date);
         view.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 Intent i = new Intent(CalendarActivity.this, FoodActivity.class);
-                i.putExtra("DATE", view.getDate());
-                startActivity(i);
+                i.putExtra("DATE", view.getDate() + "");
+                view.getContext().startActivity(i);
             }
         });
     }

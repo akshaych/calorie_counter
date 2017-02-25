@@ -39,6 +39,7 @@ public class FoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
         foodView = new FoodView(this);
+        date = getIntent().getExtras().getString("DATE");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myref_date = database.getReference(date);
         myref_date.addValueEventListener(new ValueEventListener() {
@@ -48,9 +49,25 @@ public class FoodActivity extends AppCompatActivity {
                 // whenever data at this location is updated.
                 String s = dataSnapshot.getValue(String.class);
                 try {
-                    dateInfo = new JSONArray(s);
+                    if (s == null) {
+                        String[] arr = {"", "", "", "", ""};
+                        dateInfo = new JSONArray(arr);
+                    }
+                    else {
+                        dateInfo = new JSONArray(s);
+                    }
+                    editText_weight = (EditText) findViewById(R.id.weight);
+                    editText_breakfast = (EditText) findViewById(R.id.breakfast);
+                    editText_lunch = (EditText) findViewById(R.id.lunch);
+                    editText_dinner = (EditText) findViewById(R.id.dinner);
+                    editText_snack = (EditText) findViewById(R.id.snack);
+                    editText_weight.setText((String) dateInfo.get(0));
+                    editText_breakfast.setText((String) dateInfo.get(1));
+                    editText_lunch.setText((String) dateInfo.get(2));
+                    editText_dinner.setText((String) dateInfo.get(3));
+                    editText_snack.setText((String) dateInfo.get(4));
                 } catch (JSONException e) {
-                    Toast.makeText(FoodActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FoodActivity.this, "Error1", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -60,21 +77,6 @@ public class FoodActivity extends AppCompatActivity {
                 Log.w("tag", "Failed to read value.", error.toException());
             }
         });
-        editText_weight = (EditText) findViewById(R.id.weight);
-        editText_breakfast = (EditText) findViewById(R.id.breakfast);
-        editText_lunch = (EditText) findViewById(R.id.lunch);
-        editText_dinner = (EditText) findViewById(R.id.dinner);
-        editText_snack = (EditText) findViewById(R.id.snack);
-
-        try {
-            editText_weight.setText((String) dateInfo.get(0));
-            editText_breakfast.setText((String) dateInfo.get(1));
-            editText_lunch.setText((String) dateInfo.get(2));
-            editText_dinner.setText((String) dateInfo.get(3));
-            editText_snack.setText((String) dateInfo.get(4));
-        } catch (JSONException e) {
-            Toast.makeText(FoodActivity.this, "Error", Toast.LENGTH_SHORT).show();
-        }
     }
 
     protected void onClick(View view) {
@@ -104,7 +106,7 @@ public class FoodActivity extends AppCompatActivity {
             dateInfo.put(3, dinner);
             dateInfo.put(4, snack);
         } catch (JSONException e) {
-            Toast.makeText(FoodActivity.this, "Error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(FoodActivity.this, "Error2", Toast.LENGTH_SHORT).show();
         }
         myref_date.setValue(dateInfo);
 

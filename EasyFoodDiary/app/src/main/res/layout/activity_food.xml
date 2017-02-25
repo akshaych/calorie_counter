@@ -9,7 +9,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:text="Weight: "
         android:ems="10"
         android:id="@+id/weight"
@@ -44,7 +44,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="date"
+        android:inputType="textLongMessage"
         android:ems="10"
         android:id="@+id/breakfast"
         android:text="Breakfast: "
@@ -56,7 +56,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="date"
+        android:inputType="textLongMessage"
         android:ems="10"
         android:id="@+id/dinner"
         android:text="Dinner: "
@@ -68,7 +68,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="date"
+        android:inputType="textLongMessage"
         android:ems="10"
         android:id="@+id/snack"
         android:text="Snack: "
