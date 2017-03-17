@@ -56,7 +56,7 @@ public class FoodActivity extends AppCompatActivity {
                 String s = dataSnapshot.getValue(String.class);
                 try {
                     if (s == null) {
-                        String[] arr = {"", "", "", "", ""};
+                        String[] arr = {"", "", "", "", "", "", "", "", ""};
                         dateInfo = new JSONArray(arr);
                     }
                     else {
