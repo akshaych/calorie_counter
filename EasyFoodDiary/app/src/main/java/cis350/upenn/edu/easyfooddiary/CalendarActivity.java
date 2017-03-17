@@ -3,6 +3,7 @@ package cis350.upenn.edu.easyfooddiary;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.CalendarView;
 
 import java.util.Calendar;
@@ -31,4 +32,13 @@ public class CalendarActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void onClick(View view) {
+        //have to differentiate amongst buttons
+        if (view.getId() == R.id.main) {
+            Intent i = new Intent(this, InformationActivity.class);
+            startActivity(i);
+        }
+    }
+
 }
