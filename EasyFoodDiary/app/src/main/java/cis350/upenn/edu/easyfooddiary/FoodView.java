@@ -16,6 +16,11 @@ public class FoodView extends TextView {
     protected String dinner;
     protected String snack;
 
+    protected String breakfastCalories;
+    protected String lunchCalories;
+    protected String dinnerCalories;
+    protected String snackCalories;
+
     public FoodView(Context c) {
         super(c);
     }

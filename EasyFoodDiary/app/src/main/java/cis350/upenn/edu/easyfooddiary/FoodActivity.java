@@ -27,12 +27,18 @@ public class FoodActivity extends AppCompatActivity {
     protected String date;
     protected JSONArray dateInfo;
     protected String weight, breakfast, lunch, dinner, snack;
+    protected String breakfastCalories, lunchCalories, dinnerCalories, snackCalories;
 
     protected EditText editText_weight;
     protected EditText editText_breakfast;
     protected EditText editText_lunch;
     protected EditText editText_dinner;
     protected EditText editText_snack;
+
+    protected EditText editText_breakfastCalories;
+    protected EditText editText_lunchCalories;
+    protected EditText editText_dinnerCalories;
+    protected EditText editText_snackCalories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +67,25 @@ public class FoodActivity extends AppCompatActivity {
                     editText_lunch = (EditText) findViewById(R.id.lunch);
                     editText_dinner = (EditText) findViewById(R.id.dinner);
                     editText_snack = (EditText) findViewById(R.id.snack);
+
+                    editText_breakfastCalories = (EditText) findViewById(R.id.breakfastCalories);
+                    editText_lunchCalories = (EditText) findViewById(R.id.lunchCalories);
+                    editText_dinnerCalories = (EditText) findViewById(R.id.dinnerCalories);
+                    editText_snackCalories = (EditText) findViewById(R.id.snackCalories);
+
                     editText_weight.setText((String) dateInfo.get(0));
+
                     editText_breakfast.setText((String) dateInfo.get(1));
-                    editText_lunch.setText((String) dateInfo.get(2));
-                    editText_dinner.setText((String) dateInfo.get(3));
-                    editText_snack.setText((String) dateInfo.get(4));
+                    editText_breakfastCalories.setText((String) dateInfo.get(2));
+
+                    editText_lunch.setText((String) dateInfo.get(3));
+                    editText_lunchCalories.setText((String) dateInfo.get(4));
+
+                    editText_dinner.setText((String) dateInfo.get(5));
+                    editText_dinnerCalories.setText((String) dateInfo.get(6));
+
+                    editText_snack.setText((String) dateInfo.get(7));
+                    editText_snackCalories.setText((String) dateInfo.get(8));
                 } catch (JSONException e) {
                     Toast.makeText(FoodActivity.this, "Error1", Toast.LENGTH_SHORT).show();
                 }
@@ -90,21 +110,37 @@ public class FoodActivity extends AppCompatActivity {
         editText_breakfast = (EditText) findViewById(R.id.breakfast);
         breakfast = editText_breakfast.getText().toString();
 
+        editText_breakfastCalories = (EditText) findViewById(R.id.breakfastCalories);
+        breakfastCalories = editText_breakfastCalories.getText().toString();
+
         editText_lunch = (EditText) findViewById(R.id.lunch);
         lunch = editText_lunch.getText().toString();
+
+        editText_lunchCalories = (EditText) findViewById(R.id.lunchCalories);
+        lunchCalories = editText_lunchCalories.getText().toString();
 
         editText_dinner = (EditText) findViewById(R.id.dinner);
         dinner = editText_dinner.getText().toString();
 
+        editText_dinnerCalories = (EditText) findViewById(R.id.dinnerCalories);
+        dinnerCalories = editText_dinnerCalories.getText().toString();
+
         editText_snack = (EditText) findViewById(R.id.snack);
         snack = editText_snack.getText().toString();
+
+        editText_snackCalories = (EditText) findViewById(R.id.snackCalories);
+        snackCalories = editText_snackCalories.getText().toString();
 
         try {
             dateInfo.put(0, weight);
             dateInfo.put(1, breakfast);
-            dateInfo.put(2, lunch);
-            dateInfo.put(3, dinner);
-            dateInfo.put(4, snack);
+            dateInfo.put(2, breakfastCalories);
+            dateInfo.put(3, lunch);
+            dateInfo.put(4, lunchCalories);
+            dateInfo.put(5, dinner);
+            dateInfo.put(6, dinnerCalories);
+            dateInfo.put(7, snack);
+            dateInfo.put(8, snackCalories);
             myref_date.setValue(dateInfo.toString());
             Toast.makeText(foodView.getContext(),
                     "Saved", Toast.LENGTH_SHORT).show();

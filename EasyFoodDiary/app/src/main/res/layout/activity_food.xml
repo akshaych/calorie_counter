@@ -12,7 +12,7 @@
         android:inputType="number"
         android:text=""
         android:ems="10"
-        android:hint="Weight"
+        android:hint="Weight (in lbs)"
         android:id="@+id/weight"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -81,5 +81,56 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="11dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text=""
+        android:ems="10"
+        android:hint="Calories"
+        android:id="@+id/dinnerCalories"
+        android:layout_alignBaseline="@+id/dinner"
+        android:layout_alignBottom="@+id/dinner"
+        android:layout_alignStart="@+id/lunchCalories" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text=""
+        android:ems="10"
+        android:hint="Calories"
+        android:id="@+id/breakfastCalories"
+        android:layout_alignBottom="@+id/breakfast"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/breakfast"
+        android:layout_alignStart="@+id/lunchCalories" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text=""
+        android:ems="10"
+        android:hint="Calories"
+        android:id="@+id/lunchCalories"
+        android:layout_alignBaseline="@+id/lunch"
+        android:layout_alignBottom="@+id/lunch"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/lunch" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text=""
+        android:ems="10"
+        android:hint="Calories"
+        android:id="@+id/snackCalories"
+        android:layout_alignBaseline="@+id/snack"
+        android:layout_alignBottom="@+id/snack"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/snack" />
 
 </RelativeLayout>
