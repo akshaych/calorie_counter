@@ -124,6 +124,7 @@ public class FoodActivity extends AppCompatActivity {
                     } else {
                         avgWeight = new JSONArray(s);
                     }
+                    avg = Integer.parseInt(avgWeight.get(0).toString());
                     denom = Integer.parseInt(avgWeight.get(1).toString());
                 } catch (JSONException e) {
                     Toast.makeText(FoodActivity.this, "Error3", Toast.LENGTH_SHORT).show();
@@ -136,11 +137,7 @@ public class FoodActivity extends AppCompatActivity {
                 Log.w("tag", "Failed to read value.", error.toException());
             }
         });
-        try {
-            myView.setText("Average Weight this Month: " + avgWeight.get(0).toString());
-        } catch (JSONException e) {
-            Toast.makeText(FoodActivity.this, "Error3", Toast.LENGTH_SHORT).show();
-        }
+        myView.setText("Average Weight this Month: " + avg);
     }
 
     protected void onClick(View view) {
