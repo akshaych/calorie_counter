@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -51,6 +52,7 @@ public class FoodActivity extends AppCompatActivity {
         foodView = new FoodView(this);
         date = getIntent().getExtras().getString("DATE");
         monthyear = getIntent().getExtras().getString("MONTHYEAR");
+        TextView myView = (TextView) findViewById(R.id.textView);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myref_date = database.getReference(date);
         myref_date.addValueEventListener(new ValueEventListener() {
@@ -134,6 +136,11 @@ public class FoodActivity extends AppCompatActivity {
                 Log.w("tag", "Failed to read value.", error.toException());
             }
         });
+        try {
+            myView.setText("Average Weight this Month: " + avgWeight.get(0).toString());
+        } catch (JSONException e) {
+            Toast.makeText(FoodActivity.this, "Error3", Toast.LENGTH_SHORT).show();
+        }
     }
 
     protected void onClick(View view) {

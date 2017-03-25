@@ -52,7 +52,6 @@ public class TrackerActivity extends AppCompatActivity {
                         Toast.makeText(TrackerActivity.this, "Error1", Toast.LENGTH_SHORT).show();
                     }
                 }
-
                 @Override
                 public void onCancelled(DatabaseError error) {
                     // Failed to read value
