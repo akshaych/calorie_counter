@@ -14,6 +14,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by akshay on 3/24/17.
@@ -65,6 +67,26 @@ public class SignupActivity extends AppCompatActivity { //implements View.OnClic
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
+
+    public void signup() {
+        String email = mEmailField.getText().toString();
+        String password = mPasswordField.getText().toString();
+
+        if (email == "" || password == "") {
+            //do something
+        }
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myref_name = database.getReference(email);
+
+        if (myref_name != null) {
+            
+        }
+
+
+
+    }
+
 
     private void createAccount(String email, String password) {
         if (!validateForm()) {
