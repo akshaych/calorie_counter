@@ -15,12 +15,8 @@ public class HomeActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         //have to differentiate amongst buttons
-        if (view.getId() == R.id.login) {
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
-        }
-        else if (view.getId() == R.id.sign) {
-            Intent i = new Intent(this, MainActivity.class);
+        if (view.getId() == R.id.welcome) {
+            Intent i = new Intent(this, SignupActivity.class);
             startActivity(i);
         }
     }

@@ -52,13 +52,13 @@ public class TrackerActivity extends AppCompatActivity {
                         Toast.makeText(TrackerActivity.this, "Error1", Toast.LENGTH_SHORT).show();
                     }
                 }
-
                 @Override
                 public void onCancelled(DatabaseError error) {
                     // Failed to read value
                     Log.w("tag", "Failed to read value.", error.toException());
                 }
             });
+            m++;
         }
         DataPoint[] arr = new DataPoint[12];
         for (int i = 0; i < 12; i++) {

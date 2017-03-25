@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +30,7 @@ public class FoodActivity extends AppCompatActivity {
     protected JSONArray avgWeight;
     protected JSONArray dateInfo;
     protected String weight, breakfast, lunch, dinner, snack;
-    protected int avg, denom;
+    protected int avg, denom, oldW;
     protected boolean initWeightEmpty;
     protected String breakfastCalories, lunchCalories, dinnerCalories, snackCalories;
 
@@ -51,6 +52,7 @@ public class FoodActivity extends AppCompatActivity {
         foodView = new FoodView(this);
         date = getIntent().getExtras().getString("DATE");
         monthyear = getIntent().getExtras().getString("MONTHYEAR");
+        TextView myView = (TextView) findViewById(R.id.textView);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myref_date = database.getReference(date);
         myref_date.addValueEventListener(new ValueEventListener() {
@@ -79,6 +81,12 @@ public class FoodActivity extends AppCompatActivity {
 
                     editText_weight.setText((String) dateInfo.get(0));
                     initWeightEmpty = editText_weight.getText().toString().equals("");
+                    if (initWeightEmpty) {
+                        oldW = 0;
+                    }
+                    else {
+                        oldW = Integer.parseInt(editText_weight.getText().toString());
+                    }
 
                     editText_breakfast.setText((String) dateInfo.get(1));
                     editText_breakfastCalories.setText((String) dateInfo.get(2));
@@ -116,6 +124,8 @@ public class FoodActivity extends AppCompatActivity {
                     } else {
                         avgWeight = new JSONArray(s);
                     }
+                    avg = Integer.parseInt(avgWeight.get(0).toString());
+                    denom = Integer.parseInt(avgWeight.get(1).toString());
                 } catch (JSONException e) {
                     Toast.makeText(FoodActivity.this, "Error3", Toast.LENGTH_SHORT).show();
                 }
@@ -127,6 +137,7 @@ public class FoodActivity extends AppCompatActivity {
                 Log.w("tag", "Failed to read value.", error.toException());
             }
         });
+        myView.setText("Average Weight this Month: " + avg);
     }
 
     protected void onClick(View view) {
@@ -137,18 +148,21 @@ public class FoodActivity extends AppCompatActivity {
 
         editText_weight = (EditText) findViewById(R.id.weight);
         weight = editText_weight.getText().toString();
+        Log.i("weight", initWeightEmpty + "");
+        int w = 0;
+        if (!weight.equals("")) {
+            w = Integer.parseInt(weight) - oldW;
+        }
         if (initWeightEmpty && !weight.equals("")) {
             denom++;
         }
         if (!initWeightEmpty && weight.equals("")) {
             denom--;
+            w = oldW * -1;
         }
         try {
-            int w = 0;
-            if (!weight.equals("")) {
-                w = Integer.parseInt(weight);
-            }
-            avg = (Integer.parseInt((String) avgWeight.get(0)) * Integer.parseInt((String) avgWeight.get(1)) + w)/ denom;
+            avg = (Integer.parseInt(avgWeight.get(0).toString()) * Integer.parseInt(avgWeight.get(1).toString()) + w) / denom;
+            //avg = (Integer.parseInt((String) avgWeight.get(0)) * Integer.parseInt((String) avgWeight.get(1)) + w)/ denom;
         } catch (JSONException e) {
             Toast.makeText(FoodActivity.this, "Error2", Toast.LENGTH_SHORT).show();
         }

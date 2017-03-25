@@ -14,30 +14,24 @@
         </activity>
         <activity
             android:name=".CalendarActivity"
-<<<<<<< HEAD
-            android:label="@string/title_activity_information"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
-            android:name=".FoodActivity"
-            android:label="@string/title_activity_information"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
-            android:name=".InformationActivity"
-            android:label="@string/title_activity_information"
-            android:theme="@style/AppTheme.NoActionBar">
-=======
             android:label="CalendarActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
             android:name=".FoodActivity"
             android:label="FoodActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
             android:name=".InformationActivity"
             android:label="InformationActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".SignupActivity"
+            android:label="SignupActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
             android:name=".HomeActivity"
             android:label="HomeActivity"
@@ -46,7 +40,16 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
->>>>>>> origin/master
+        </activity>
+        <activity
+            android:name=".TrackerActivity"
+            android:label="TrackerActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".MonthCalendarActivity"
+            android:label="MonthCalendarActivity"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 
