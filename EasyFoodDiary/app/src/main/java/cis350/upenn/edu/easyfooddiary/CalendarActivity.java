@@ -28,6 +28,7 @@ public class CalendarActivity extends AppCompatActivity {
                 int month_add;
                 month_add = month + 1;
                 i.putExtra("DATE", month_add + "," + dayOfMonth + "," + year);
+                i.putExtra("MONTHYEAR", month_add + "," + year);
                 view.getContext().startActivity(i);
             }
         });

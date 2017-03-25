@@ -14,6 +14,20 @@
         </activity>
         <activity
             android:name=".CalendarActivity"
+<<<<<<< HEAD
+            android:label="@string/title_activity_information"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".FoodActivity"
+            android:label="@string/title_activity_information"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".InformationActivity"
+            android:label="@string/title_activity_information"
+            android:theme="@style/AppTheme.NoActionBar">
+=======
             android:label="CalendarActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
@@ -40,6 +54,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+>>>>>>> origin/master
         </activity>
     </application>
 
