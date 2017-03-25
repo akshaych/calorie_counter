@@ -59,6 +59,7 @@ public class TrackerActivity extends AppCompatActivity {
                     Log.w("tag", "Failed to read value.", error.toException());
                 }
             });
+            m++;
         }
         DataPoint[] arr = new DataPoint[12];
         for (int i = 0; i < 12; i++) {

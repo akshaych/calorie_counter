@@ -29,7 +29,7 @@ public class FoodActivity extends AppCompatActivity {
     protected JSONArray avgWeight;
     protected JSONArray dateInfo;
     protected String weight, breakfast, lunch, dinner, snack;
-    protected int avg, denom;
+    protected int avg, denom, oldW;
     protected boolean initWeightEmpty;
     protected String breakfastCalories, lunchCalories, dinnerCalories, snackCalories;
 
@@ -79,6 +79,12 @@ public class FoodActivity extends AppCompatActivity {
 
                     editText_weight.setText((String) dateInfo.get(0));
                     initWeightEmpty = editText_weight.getText().toString().equals("");
+                    if (initWeightEmpty) {
+                        oldW = 0;
+                    }
+                    else {
+                        oldW = Integer.parseInt(editText_weight.getText().toString());
+                    }
 
                     editText_breakfast.setText((String) dateInfo.get(1));
                     editText_breakfastCalories.setText((String) dateInfo.get(2));
@@ -139,17 +145,18 @@ public class FoodActivity extends AppCompatActivity {
         editText_weight = (EditText) findViewById(R.id.weight);
         weight = editText_weight.getText().toString();
         Log.i("weight", initWeightEmpty + "");
+        int w = 0;
+        if (!weight.equals("")) {
+            w = Integer.parseInt(weight) - oldW;
+        }
         if (initWeightEmpty && !weight.equals("")) {
             denom++;
         }
         if (!initWeightEmpty && weight.equals("")) {
             denom--;
+            w = oldW * -1;
         }
         try {
-            int w = 0;
-            if (!weight.equals("")) {
-                w = Integer.parseInt(weight);
-            }
             avg = (Integer.parseInt(avgWeight.get(0).toString()) * Integer.parseInt(avgWeight.get(1).toString()) + w) / denom;
             //avg = (Integer.parseInt((String) avgWeight.get(0)) * Integer.parseInt((String) avgWeight.get(1)) + w)/ denom;
         } catch (JSONException e) {
