@@ -116,6 +116,7 @@ public class FoodActivity extends AppCompatActivity {
                     } else {
                         avgWeight = new JSONArray(s);
                     }
+                    denom = Integer.parseInt(avgWeight.get(1).toString());
                 } catch (JSONException e) {
                     Toast.makeText(FoodActivity.this, "Error3", Toast.LENGTH_SHORT).show();
                 }
@@ -137,6 +138,7 @@ public class FoodActivity extends AppCompatActivity {
 
         editText_weight = (EditText) findViewById(R.id.weight);
         weight = editText_weight.getText().toString();
+        Log.i("weight", initWeightEmpty + "");
         if (initWeightEmpty && !weight.equals("")) {
             denom++;
         }
@@ -148,7 +150,8 @@ public class FoodActivity extends AppCompatActivity {
             if (!weight.equals("")) {
                 w = Integer.parseInt(weight);
             }
-            avg = (Integer.parseInt((String) avgWeight.get(0)) * Integer.parseInt((String) avgWeight.get(1)) + w)/ denom;
+            avg = (Integer.parseInt(avgWeight.get(0).toString()) * Integer.parseInt(avgWeight.get(1).toString()) + w) / denom;
+            //avg = (Integer.parseInt((String) avgWeight.get(0)) * Integer.parseInt((String) avgWeight.get(1)) + w)/ denom;
         } catch (JSONException e) {
             Toast.makeText(FoodActivity.this, "Error2", Toast.LENGTH_SHORT).show();
         }
