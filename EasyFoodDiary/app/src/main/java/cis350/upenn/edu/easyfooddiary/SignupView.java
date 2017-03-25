@@ -8,17 +8,13 @@ import android.widget.TextView;
  * Created by akshay on 2/24/17.
  */
 
-public class InformationView extends TextView {
+public class SignupView extends TextView {
 
-    protected String namer;
-    protected String birthdate;
-    protected String goal;
-
-    public InformationView(Context c) {
+    public SignupView(Context c) {
         super(c);
     }
 
-    public InformationView(Context c, AttributeSet a) {
+    public SignupView(Context c, AttributeSet a) {
         super(c, a);
     }
 
