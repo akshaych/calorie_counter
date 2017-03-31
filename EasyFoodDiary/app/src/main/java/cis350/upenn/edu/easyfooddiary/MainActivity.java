@@ -27,5 +27,9 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(this, CalendarActivity.class);
             startActivity(i);
         }
+        else if (view.getId() == R.id.fitness_goals) {
+            Intent i = new Intent(this, FitnessActivity.class);
+            startActivity(i);
+        }
     }
 }
