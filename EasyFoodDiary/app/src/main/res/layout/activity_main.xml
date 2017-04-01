@@ -29,15 +29,6 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/calendar"
-        android:text="Calendar"
-        android:onClick="onClick"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tracker"
         android:text="Tracker"
         android:onClick="onClick"
@@ -47,10 +38,30 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Fitness Goals"
+        android:onClick="onClick"
+        android:id ="@+id/fitness_goals"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/your_information"
         android:text="Your Information"
         android:onClick="onClick"
         android:layout_marginBottom="14dp"
-        android:layout_above="@+id/calendar"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/tracker"
+        android:layout_toEndOf="@+id/tracker" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendar"
+        android:text="Calendar"
+        android:onClick="onClick"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/fitness_goals"
+        android:layout_marginEnd="16dp" />
+
 </RelativeLayout>

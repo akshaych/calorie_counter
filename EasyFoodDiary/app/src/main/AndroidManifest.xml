@@ -51,6 +51,11 @@
             android:label="MonthCalendarActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".FitnessActivity"
+            android:label="FitnessActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
