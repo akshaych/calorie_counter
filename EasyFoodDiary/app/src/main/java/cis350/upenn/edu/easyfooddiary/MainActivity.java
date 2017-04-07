@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (view.getId() == R.id.nutrition) {
             Intent i = new Intent(this, NutritionActivity.class);
+        }
+        else if (view.getId() == R.id.calc) {
+            Intent i = new Intent(this, CalculatorActivity.class);
             startActivity(i);
         }
     }

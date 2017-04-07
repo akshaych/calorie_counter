@@ -29,6 +29,15 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Fitness Goals"
+        android:onClick="onClick"
+        android:id ="@+id/fitness_goals"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/tracker"
         android:text="Tracker"
         android:onClick="onClick"
@@ -38,11 +47,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fitness Goals"
+        android:id="@+id/calendar"
+        android:text="Calendar"
         android:onClick="onClick"
-        android:id ="@+id/fitness_goals"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignStart="@+id/your_information"
+        android:layout_marginStart="16dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -75,4 +85,19 @@
         android:layout_alignEnd="@+id/calendar"
         android:layout_marginEnd="15dp" />
 
+    <Button
+        android:id="@+id/calc"
+        android:text="Calorie Burn Calculator"
+        android:onClick="onClick"
+        android:layout_above="@+id/fitness_goals"
+        android:layout_toEndOf="@+id/textView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/your_information"
+        android:text="Your Information"
+        android:onClick="onClick"
+        android:layout_above="@+id/calc"
+        android:layout_toEndOf="@+id/tracker" />
 </RelativeLayout>

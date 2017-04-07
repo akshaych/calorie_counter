@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    tools:context="cis350.upenn.edu.easyfooddiary.InformationActivity">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pushups needed: "
+        android:id="@+id/pushups"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="13dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Miles to run: "
+        android:id="@+id/running"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="13dp"
+        android:layout_below="@+id/pushups"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Miles to bike: "
+        android:id="@+id/biking"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="13dp"
+        android:layout_below="@+id/running"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Miles to walk: "
+        android:id="@+id/walking"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="13dp"
+        android:layout_below="@+id/biking"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text=""
+        android:hint="Calories"
+        android:id="@+id/calories"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main"
+        android:text="Main"
+        android:onClick="onClick"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calculate"
+        android:text="Calculate"
+        android:onClick="onClick"
+        android:layout_below="@+id/walking"
+        android:layout_marginTop="56dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
