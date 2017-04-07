@@ -34,7 +34,7 @@ public class TrackerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tracker);
         GraphView graph = (GraphView) findViewById(R.id.graph);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        while (m < 12) {
+        while (m < 13) {
             DatabaseReference myref_year = database.getReference(m + ",2017");
             myref_year.addValueEventListener(new ValueEventListener() {
                 @Override
