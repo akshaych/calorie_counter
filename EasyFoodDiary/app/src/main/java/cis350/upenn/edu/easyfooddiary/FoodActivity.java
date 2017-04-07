@@ -155,7 +155,7 @@ public class FoodActivity extends AppCompatActivity {
         myView.setText("Average Weight this Month: " + avg);
     }
 
-    protected void onClick(View view) {
+    public void onClick(View view) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myref_date = database.getReference(date);
