@@ -54,8 +54,8 @@ public class InformationActivity extends AppCompatActivity {
             }
         });
 
-        DatabaseReference myref_date = database.getReference("date");
-        myref_date.addValueEventListener(new ValueEventListener() {
+        DatabaseReference myref_nutrition = database.getReference("date");
+        myref_nutrition.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -96,7 +96,7 @@ public class InformationActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myref_name = database.getReference("name");
-        DatabaseReference myref_date = database.getReference("date");
+        DatabaseReference myref_nutrition = database.getReference("date");
         DatabaseReference myref_goal = database.getReference("goal");
 
         Log.v("Setting name", "done");
@@ -113,7 +113,7 @@ public class InformationActivity extends AppCompatActivity {
         try {
             df.parse(birthdate);
             myref_name.setValue(namer);
-            myref_date.setValue(birthdate);
+            myref_nutrition.setValue(birthdate);
             myref_goal.setValue(goal);
 
             Toast.makeText(informationView.getContext(),
