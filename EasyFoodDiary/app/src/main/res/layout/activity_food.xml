@@ -13,7 +13,7 @@
         android:id="@+id/textView"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="13dp"
-        android:layout_below="@+id/snack"
+        android:layout_below="@+id/snack3"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
     <EditText
@@ -35,7 +35,7 @@
         android:layout_marginTop="56dp"
         android:layout_marginRight="13dp"
         android:layout_marginEnd="13dp"
-        android:layout_below="@+id/snack"
+        android:layout_below="@+id/snack3"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -83,10 +83,34 @@
         android:layout_height="wrap_content"
         android:inputType="textLongMessage"
         android:ems="10"
-        android:id="@+id/snack"
+        android:id="@+id/snack1"
         android:text=""
         android:hint="Snack"
         android:layout_below="@+id/dinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textLongMessage"
+        android:ems="10"
+        android:id="@+id/snack2"
+        android:text=""
+        android:hint="Snack"
+        android:layout_below="@+id/snack1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textLongMessage"
+        android:ems="10"
+        android:id="@+id/snack3"
+        android:text=""
+        android:hint="Snack"
+        android:layout_below="@+id/snack2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="11dp" />
@@ -136,10 +160,34 @@
         android:text=""
         android:ems="10"
         android:hint="Calories"
-        android:id="@+id/snackCalories"
-        android:layout_alignBaseline="@+id/snack"
-        android:layout_alignBottom="@+id/snack"
+        android:id="@+id/snack1Calories"
+        android:layout_alignBaseline="@+id/snack1"
+        android:layout_alignBottom="@+id/snack1"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/snack" />
+        android:layout_toEndOf="@+id/snack1" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text=""
+        android:ems="10"
+        android:hint="Calories"
+        android:id="@+id/snack2Calories"
+        android:layout_alignBaseline="@+id/snack2"
+        android:layout_alignBottom="@+id/snack2"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/snack2" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text=""
+        android:ems="10"
+        android:hint="Calories"
+        android:id="@+id/snack3Calories"
+        android:layout_alignBaseline="@+id/snack3"
+        android:layout_alignBottom="@+id/snack3"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/snack3" />
 
 </RelativeLayout>
