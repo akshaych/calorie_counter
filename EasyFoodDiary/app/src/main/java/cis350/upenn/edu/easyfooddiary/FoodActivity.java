@@ -1,5 +1,6 @@
 package cis350.upenn.edu.easyfooddiary;
 
+import android.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,13 +9,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -28,7 +27,7 @@ public class FoodActivity extends AppCompatActivity {
     protected String date;
     protected String monthyear;
     protected JSONArray avgWeight;
-    protected JSONArray dateInfo;
+    protected JSONArray info;
     protected String weight, breakfast, lunch, dinner, snack;
     protected int avg, denom, oldW;
     protected boolean initWeightEmpty;
@@ -52,10 +51,10 @@ public class FoodActivity extends AppCompatActivity {
         foodView = new FoodView(this);
         date = getIntent().getExtras().getString("DATE");
         monthyear = getIntent().getExtras().getString("MONTHYEAR");
-        TextView myView = (TextView) findViewById(R.id.textView);
+        final TextView myView = (TextView) findViewById(R.id.textView);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myref_date = database.getReference(date);
-        myref_date.addValueEventListener(new ValueEventListener() {
+        DatabaseReference myref_nutrition = database.getReference(date);
+        myref_nutrition.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -64,9 +63,9 @@ public class FoodActivity extends AppCompatActivity {
                 try {
                     if (s == null) {
                         String[] arr = {"", "", "", "", "", "", "", "", ""};
-                        dateInfo = new JSONArray(arr);
+                        info = new JSONArray(arr);
                     } else {
-                        dateInfo = new JSONArray(s);
+                        info = new JSONArray(s);
                     }
                     editText_weight = (EditText) findViewById(R.id.weight);
                     editText_breakfast = (EditText) findViewById(R.id.breakfast);
@@ -79,7 +78,7 @@ public class FoodActivity extends AppCompatActivity {
                     editText_dinnerCalories = (EditText) findViewById(R.id.dinnerCalories);
                     editText_snackCalories = (EditText) findViewById(R.id.snackCalories);
 
-                    editText_weight.setText((String) dateInfo.get(0));
+                    editText_weight.setText((String) info.get(0));
                     initWeightEmpty = editText_weight.getText().toString().equals("");
                     if (initWeightEmpty) {
                         oldW = 0;
@@ -88,17 +87,17 @@ public class FoodActivity extends AppCompatActivity {
                         oldW = Integer.parseInt(editText_weight.getText().toString());
                     }
 
-                    editText_breakfast.setText((String) dateInfo.get(1));
-                    editText_breakfastCalories.setText((String) dateInfo.get(2));
+                    editText_breakfast.setText((String) info.get(1));
+                    editText_breakfastCalories.setText((String) info.get(2));
 
-                    editText_lunch.setText((String) dateInfo.get(3));
-                    editText_lunchCalories.setText((String) dateInfo.get(4));
+                    editText_lunch.setText((String) info.get(3));
+                    editText_lunchCalories.setText((String) info.get(4));
 
-                    editText_dinner.setText((String) dateInfo.get(5));
-                    editText_dinnerCalories.setText((String) dateInfo.get(6));
+                    editText_dinner.setText((String) info.get(5));
+                    editText_dinnerCalories.setText((String) info.get(6));
 
-                    editText_snack.setText((String) dateInfo.get(7));
-                    editText_snackCalories.setText((String) dateInfo.get(8));
+                    editText_snack.setText((String) info.get(7));
+                    editText_snackCalories.setText((String) info.get(8));
                 } catch (JSONException e) {
                     Toast.makeText(FoodActivity.this, "Error1", Toast.LENGTH_SHORT).show();
                 }
@@ -126,6 +125,7 @@ public class FoodActivity extends AppCompatActivity {
                     }
                     avg = Integer.parseInt(avgWeight.get(0).toString());
                     denom = Integer.parseInt(avgWeight.get(1).toString());
+                    myView.setText("Average Weight this Month: " + avg);
                 } catch (JSONException e) {
                     Toast.makeText(FoodActivity.this, "Error3", Toast.LENGTH_SHORT).show();
                 }
@@ -137,13 +137,13 @@ public class FoodActivity extends AppCompatActivity {
                 Log.w("tag", "Failed to read value.", error.toException());
             }
         });
-        myView.setText("Average Weight this Month: " + avg);
+
     }
 
     protected void onClick(View view) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myref_date = database.getReference(date);
+        DatabaseReference myref_nutrition = database.getReference(date);
         DatabaseReference myref_my = database.getReference(monthyear);
 
         editText_weight = (EditText) findViewById(R.id.weight);
@@ -192,18 +192,18 @@ public class FoodActivity extends AppCompatActivity {
         snackCalories = editText_snackCalories.getText().toString();
 
         try {
-            dateInfo.put(0, weight);
-            dateInfo.put(1, breakfast);
-            dateInfo.put(2, breakfastCalories);
-            dateInfo.put(3, lunch);
-            dateInfo.put(4, lunchCalories);
-            dateInfo.put(5, dinner);
-            dateInfo.put(6, dinnerCalories);
-            dateInfo.put(7, snack);
-            dateInfo.put(8, snackCalories);
+            info.put(0, weight);
+            info.put(1, breakfast);
+            info.put(2, breakfastCalories);
+            info.put(3, lunch);
+            info.put(4, lunchCalories);
+            info.put(5, dinner);
+            info.put(6, dinnerCalories);
+            info.put(7, snack);
+            info.put(8, snackCalories);
             avgWeight.put(0, avg);
             avgWeight.put(1, denom);
-            myref_date.setValue(dateInfo.toString());
+            myref_nutrition.setValue(info.toString());
             myref_my.setValue(avgWeight.toString());
             Toast.makeText(foodView.getContext(),
                     "Saved", Toast.LENGTH_SHORT).show();

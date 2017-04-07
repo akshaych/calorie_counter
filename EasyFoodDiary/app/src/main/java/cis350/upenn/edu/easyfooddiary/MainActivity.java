@@ -31,5 +31,9 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(this, FitnessActivity.class);
             startActivity(i);
         }
+        else if (view.getId() == R.id.nutrition) {
+            Intent i = new Intent(this, NutritionActivity.class);
+            startActivity(i);
+        }
     }
 }

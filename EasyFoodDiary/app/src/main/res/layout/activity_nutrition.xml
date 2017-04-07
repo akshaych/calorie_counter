@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    tools:context="cis350.upenn.edu.easyfooddiary.InformationActivity">
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textLongMessage"
+        android:text=""
+        android:ems="10"
+        android:id="@+id/calories"
+        android:layout_below="@+id/breakfast"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:hint="Calories"
+        android:layout_marginTop="13dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textLongMessage"
+        android:ems="10"
+        android:id="@+id/carbs"
+        android:text=""
+        android:hint="Carbohydrates"
+        android:layout_below="@+id/calories"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textLongMessage"
+        android:ems="10"
+        android:id="@+id/protein"
+        android:text=""
+        android:hint="Protein"
+        android:layout_below="@+id/carbs"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textLongMessage"
+        android:ems="10"
+        android:id="@+id/fat"
+        android:text=""
+        android:hint="Fat"
+        android:layout_below="@+id/protein"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp" />
+
+    <Button
+        android:text="Save"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/Save"
+        android:onClick="onClick"
+        android:layout_marginRight="13dp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/fat" />
+
+
+</RelativeLayout>

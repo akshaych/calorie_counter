@@ -47,21 +47,32 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/your_information"
-        android:text="Your Information"
-        android:onClick="onClick"
-        android:layout_marginBottom="14dp"
-        android:layout_above="@+id/tracker"
-        android:layout_toEndOf="@+id/tracker" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/calendar"
         android:text="Calendar"
         android:onClick="onClick"
         android:layout_alignParentBottom="true"
         android:layout_toStartOf="@+id/fitness_goals"
         android:layout_marginEnd="16dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nutrition"
+        android:text="Nutrition"
+        android:onClick="onClick"
+        android:layout_alignBaseline="@+id/your_information"
+        android:layout_alignBottom="@+id/your_information"
+        android:layout_toEndOf="@+id/your_information" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/your_information"
+        android:text="Your Information"
+        android:onClick="onClick"
+        android:layout_marginBottom="14dp"
+        android:layout_above="@+id/tracker"
+        android:layout_alignEnd="@+id/calendar"
+        android:layout_marginEnd="15dp" />
 
 </RelativeLayout>
