@@ -38,6 +38,15 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Fitness Goals"
+        android:onClick="onClick"
+        android:id ="@+id/fitness_goals"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/tracker"
         android:text="Tracker"
         android:onClick="onClick"
