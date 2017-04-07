@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text = "Minutes per Workout:"
+        android:id="@+id/texView2"
+        android:layout_alignTop="@+id/minutesPerWorkout"
+        android:layout_alignStart="@+id/minutesPerWorkout" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text = "Workouts per Week:"
+        android:id="@+id/textView3"
+        android:layout_alignTop="@+id/workoutsPerWeek"
+        android:layout_alignStart="@+id/workoutsPerWeek" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Enter Desired Workouts per Week"
+        android:id="@+id/workoutsPerWeek"
+        android:layout_marginTop="165dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/minutesPerWorkout" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Enter Desired Minutes per Week"
+        android:id="@+id/minutesPerWorkout"
+        android:layout_marginStart="49dp"
+        android:layout_above="@+id/textView3"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Save"
+        android:onClick="onClick"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/workoutsPerWeek"
+        android:layout_alignStart="@+id/workoutsPerWeek"
+        android:layout_marginStart="81dp" />
+
+</RelativeLayout>
