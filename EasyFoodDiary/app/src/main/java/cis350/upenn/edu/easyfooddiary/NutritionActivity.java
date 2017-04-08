@@ -78,35 +78,39 @@ public class NutritionActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myref_nutrition = database.getReference("nutrition");
 
-        editText_calories = (EditText) findViewById(R.id.calories);
-        calories = editText_calories.getText().toString();
+        if (view.getId() == R.id.nutrition) {
+            editText_calories = (EditText) findViewById(R.id.calories);
+            calories = editText_calories.getText().toString();
 
-        editText_carbs = (EditText) findViewById(R.id.carbs);
-        carbs = editText_carbs.getText().toString();
+            editText_carbs = (EditText) findViewById(R.id.carbs);
+            carbs = editText_carbs.getText().toString();
 
-        editText_protein = (EditText) findViewById(R.id.protein);
-        protein = editText_protein.getText().toString();
+            editText_protein = (EditText) findViewById(R.id.protein);
+            protein = editText_protein.getText().toString();
 
-        editText_fat = (EditText) findViewById(R.id.fat);
-        fat = editText_fat.getText().toString();
+            editText_fat = (EditText) findViewById(R.id.fat);
+            fat = editText_fat.getText().toString();
 
-        if (Integer.parseInt(carbs) + Integer.parseInt(protein) + Integer.parseInt(fat) == 100) {
+            if (Integer.parseInt(carbs) + Integer.parseInt(protein) + Integer.parseInt(fat) == 100) {
 
-            try {
-                info.put(0, calories);
-                info.put(1, carbs);
-                info.put(2, protein);
-                info.put(3, fat);
-                myref_nutrition.setValue(info.toString());
-                Toast.makeText(nutritionView.getContext(),
-                        "Saved", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this, MainActivity.class);
-                startActivity(i);
-            } catch (JSONException e) {
-                Toast.makeText(NutritionActivity.this, "Error2", Toast.LENGTH_SHORT).show();
+                try {
+                    info.put(0, calories);
+                    info.put(1, carbs);
+                    info.put(2, protein);
+                    info.put(3, fat);
+                    myref_nutrition.setValue(info.toString());
+                    Toast.makeText(nutritionView.getContext(),
+                            "Saved", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(this, MainActivity.class);
+                    startActivity(i);
+                } catch (JSONException e) {
+                    Toast.makeText(NutritionActivity.this, "Error2", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(NutritionActivity.this, "Macros don't add to 100 %", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(NutritionActivity.this, "Macros don't add to 100 %", Toast.LENGTH_SHORT).show();
+            
         }
     }
 }
