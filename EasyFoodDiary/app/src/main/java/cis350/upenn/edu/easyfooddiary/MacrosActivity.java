@@ -37,7 +37,8 @@ public class MacrosActivity extends AppCompatActivity {
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
         }
-        /*else if (view.getId() == R.id.calculate) {;
+        else if (view.getId() == R.id.calculate) {
+
             String calories = editText_calories.getText().toString();
             if (calories.equals("")) {
                 Toast.makeText(MacrosActivity.this, "Enter calories to burn", Toast.LENGTH_SHORT).show();
@@ -49,6 +50,6 @@ public class MacrosActivity extends AppCompatActivity {
                 biking.setText("Miles to bike: " + cal / 30.0);
                 walking.setText("Miles to walk: " + cal / 50.0);
             }
-        }*/
+        }
     }
 }
