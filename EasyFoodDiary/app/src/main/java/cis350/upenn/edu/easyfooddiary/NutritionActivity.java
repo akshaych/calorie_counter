@@ -109,8 +109,13 @@ public class NutritionActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(NutritionActivity.this, "Macros don't add to 100 %", Toast.LENGTH_SHORT).show();
             }
-        } else {
-            
+        } else if (view.getId() == R.id.macrogoals) {
+            Intent i = new Intent(this, MacrosActivity.class);
+            startActivity(i);
+        }
+        else {
+            Intent i = new Intent(this, PieChartActivity.class);
+            startActivity(i);
         }
     }
 }

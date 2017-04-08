@@ -7,10 +7,15 @@ package cis350.upenn.edu.easyfooddiary;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.firebase.database.*;
+import org.json.JSONArray;
+import org.json.JSONException;
+
 
 /**
  * Created by haile on 4/7/2017.
@@ -19,37 +24,72 @@ import android.widget.Toast;
 public class MacrosActivity extends AppCompatActivity {
 
     protected EditText editText_calories;
-    protected TextView title, carbs, protein, fat;
+    protected TextView title, carbsText, proteinText, fatText;
+    protected JSONArray info;
+    protected String cals, carbs, protein, fat;
+    protected Double gramsPerCalorie = 7.71617917647;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_displaymacros);
         title = (TextView) findViewById(R.id.title);
         title.setText("Amount of Macros Needed to Achieve Goals!");
-        carbs = (TextView) findViewById(R.id.carbs);
-        protein = (TextView) findViewById(R.id.protein);
-        fat = (TextView) findViewById(R.id.fat);
+        carbsText = (TextView) findViewById(R.id.carbs);
+        proteinText = (TextView) findViewById(R.id.protein);
+        fatText = (TextView) findViewById(R.id.fat);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myref_nutrition = database.getReference("nutrition");
+        myref_nutrition.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String s = dataSnapshot.getValue(String.class);
+                try {
+                    if (s == null) {
+                        String[] arr = {"", "", "", ""};
+                        info = new JSONArray(arr);
+                    } else {
+                        info = new JSONArray(s);
+                    }
+                    /*editText_calories = (EditText) findViewById(R.id.calories);
+                    carbsText = (EditText) findViewById(R.id.carbs);
+                    proteinText = (EditText) findViewById(R.id.protein);
+                    fatText = (EditText) findViewById(R.id.fat);*/
+
+                    cals = (String) info.get(0);
+
+                    carbs = ((String) info.get(1));
+                    protein = ((String) info.get(2));
+
+                    fat = ((String) info.get(3));
+
+                } catch (JSONException e) {
+                    Toast.makeText(MacrosActivity.this, "Error1", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("tag", "Failed to read value.", error.toException());
+            }
+        });
+        int calories = Integer.parseInt(cals);
+        Double carbPercent = (Integer.parseInt(carbs) / 100.0);
+        Double proteinPercent = (Integer.parseInt(protein) / 100.0);
+        Double fatPercent = (Integer.parseInt(fat) / 100.0);
+
+
+        carbsText.setText((int) (carbPercent * calories * gramsPerCalorie));
+        proteinText.setText((int) (proteinPercent * calories * gramsPerCalorie));
+        fatText.setText((int) (fatPercent * calories * gramsPerCalorie));
+
     }
 
     public void onClick(View view) {
         //have to differentiate amongst buttons
-        if (view.getId() == R.id.main) {
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
-        }
-        else if (view.getId() == R.id.calculate) {
 
-            String calories = editText_calories.getText().toString();
-            if (calories.equals("")) {
-                Toast.makeText(MacrosActivity.this, "Enter calories to burn", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                int cal = Integer.parseInt(calories);
-                pushups.setText("Pushups needed: " + cal * 5);
-                running.setText("Miles to run: " + cal / 100.0);
-                biking.setText("Miles to bike: " + cal / 30.0);
-                walking.setText("Miles to walk: " + cal / 50.0);
-            }
-        }
     }
 }
