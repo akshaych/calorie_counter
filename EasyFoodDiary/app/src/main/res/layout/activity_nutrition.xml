@@ -73,8 +73,8 @@
         android:id="@+id/macrogoals"
         android:onClick="onClick"
         android:layout_marginRight="13dp"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/fat" />
+        android:layout_below="@+id/Save"
+        android:layout_alignStart="@+id/Save" />
 
 
 </RelativeLayout>
