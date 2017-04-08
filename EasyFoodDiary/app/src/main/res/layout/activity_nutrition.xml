@@ -66,5 +66,15 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/fat" />
 
+    <Button
+        android:text="Macro Goals"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/macrogoals"
+        android:onClick="onClick"
+        android:layout_marginRight="13dp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/fat" />
+
 
 </RelativeLayout>
