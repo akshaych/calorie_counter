@@ -21,14 +21,6 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import java.util.ArrayList;
 
 /**
@@ -155,7 +147,7 @@ public class PieChartActivity extends Activity {
         }
 
         //create the data set
-        PieDataSet pieDataSet = new PieDataSet(yEntrys, "Employee Sales");
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "Macro Percentages");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
 

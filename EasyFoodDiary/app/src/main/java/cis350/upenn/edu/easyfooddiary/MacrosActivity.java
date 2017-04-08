@@ -82,9 +82,9 @@ public class MacrosActivity extends AppCompatActivity {
         Double fatPercent = (Integer.parseInt(fat) / 100.0);
 
 
-        carbsText.setText((int) (carbPercent * calories * gramsPerCalorie));
-        proteinText.setText((int) (proteinPercent * calories * gramsPerCalorie));
-        fatText.setText((int) (fatPercent * calories * gramsPerCalorie));
+        carbsText.setText("Carbohydrates Needed: " + (int) (carbPercent * calories * gramsPerCalorie) + " grams");
+        proteinText.setText("Protein Needed: " + (int) (proteinPercent * calories * gramsPerCalorie) + " grams");
+        fatText.setText("Fat Needed: " + (int) (fatPercent * calories * gramsPerCalorie) + " grams");
 
     }
 
