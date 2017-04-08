@@ -29,15 +29,6 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/calendar"
-        android:text="Calendar"
-        android:onClick="onClick"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Fitness Goals"
         android:onClick="onClick"
         android:id ="@+id/fitness_goals"
@@ -59,8 +50,8 @@
         android:id="@+id/calc"
         android:text="Calorie Burn Calculator"
         android:onClick="onClick"
-        android:layout_above="@+id/calendar"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/fitness_goals"
+        android:layout_toEndOf="@+id/textView" />
 
     <Button
         android:layout_width="wrap_content"
@@ -68,7 +59,26 @@
         android:id="@+id/your_information"
         android:text="Your Information"
         android:onClick="onClick"
-        android:layout_marginBottom="14dp"
         android:layout_above="@+id/calc"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendar"
+        android:text="Calendar"
+        android:onClick="onClick"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/fitness_goals"
+        android:layout_marginEnd="13dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nutrition"
+        android:text="Nutrition"
+        android:onClick="onClick"
+        android:layout_above="@+id/calc"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="13dp" />
 </RelativeLayout>
