@@ -76,5 +76,15 @@
         android:layout_below="@+id/Save"
         android:layout_alignStart="@+id/Save" />
 
+    <Button
+        android:text="Display Macro Goals Distribution"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayPiChart"
+        android:onClick="onClick"
+        android:layout_marginRight="13dp"
+        android:layout_below="@+id/macrogoals"
+        android:layout_alignStart="@+id/Save" />
+
 
 </RelativeLayout>

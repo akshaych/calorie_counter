@@ -1,41 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="cis350.upenn.edu.easyfooddiary.MacrosActivity">
+
     <TextView
-        android:text="TextView"
+        android:text="Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/title"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="34dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Carbs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/carbs"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/title"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Protein"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/protein"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/carbs"
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/carbs"
-        android:layout_above="@+id/title"
-        android:layout_below="@+id/protein"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="37dp" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/protein"
-        android:layout_above="@+id/fat"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="53dp" />
-
-    <TextView
-        android:text="TextView"
+        android:text="Fat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fat"
-        android:layout_marginTop="130dp"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/protein"
         android:layout_alignParentStart="true" />
 </RelativeLayout>

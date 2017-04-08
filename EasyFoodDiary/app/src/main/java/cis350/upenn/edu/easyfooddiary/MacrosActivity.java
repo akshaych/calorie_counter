@@ -4,7 +4,6 @@ package cis350.upenn.edu.easyfooddiary;
  * Created by Daniel on 4/7/2017.
  */
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,7 +11,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.firebase.database.*;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -31,6 +36,7 @@ public class MacrosActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_displaymacros);
         title = (TextView) findViewById(R.id.title);
@@ -38,6 +44,7 @@ public class MacrosActivity extends AppCompatActivity {
         carbsText = (TextView) findViewById(R.id.carbs);
         proteinText = (TextView) findViewById(R.id.protein);
         fatText = (TextView) findViewById(R.id.fat);
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myref_nutrition = database.getReference("nutrition");
         myref_nutrition.addValueEventListener(new ValueEventListener() {
@@ -58,12 +65,21 @@ public class MacrosActivity extends AppCompatActivity {
                     proteinText = (EditText) findViewById(R.id.protein);
                     fatText = (EditText) findViewById(R.id.fat);*/
 
-                    cals = (String) info.get(0);
+                    cals = ((String) info.get(0));
 
                     carbs = ((String) info.get(1));
                     protein = ((String) info.get(2));
 
                     fat = ((String) info.get(3));
+
+                    int calories = Integer.parseInt(cals);
+                    Double carbPercent = (Integer.parseInt(carbs) / 100.0);
+                    Double proteinPercent = (Integer.parseInt(protein) / 100.0);
+                    Double fatPercent = (Integer.parseInt(fat) / 100.0);
+
+                    carbsText.setText("Carbohydrates Needed: " + (int) (carbPercent * calories * gramsPerCalorie) + " grams");
+                    proteinText.setText("Protein Needed: " + (int) (proteinPercent * calories * gramsPerCalorie) + " grams");
+                    fatText.setText("Fat Needed: " + (int) (fatPercent * calories * gramsPerCalorie) + " grams");
 
                 } catch (JSONException e) {
                     Toast.makeText(MacrosActivity.this, "Error1", Toast.LENGTH_SHORT).show();
@@ -76,15 +92,6 @@ public class MacrosActivity extends AppCompatActivity {
                 Log.w("tag", "Failed to read value.", error.toException());
             }
         });
-        int calories = Integer.parseInt(cals);
-        Double carbPercent = (Integer.parseInt(carbs) / 100.0);
-        Double proteinPercent = (Integer.parseInt(protein) / 100.0);
-        Double fatPercent = (Integer.parseInt(fat) / 100.0);
-
-
-        carbsText.setText("Carbohydrates Needed: " + (int) (carbPercent * calories * gramsPerCalorie) + " grams");
-        proteinText.setText("Protein Needed: " + (int) (proteinPercent * calories * gramsPerCalorie) + " grams");
-        fatText.setText("Fat Needed: " + (int) (fatPercent * calories * gramsPerCalorie) + " grams");
 
     }
 

@@ -4,23 +4,22 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+
 import java.util.ArrayList;
 
 /**
@@ -69,6 +68,53 @@ public class PieChartActivity extends Activity {
                     protein = ((String) info.get(2));
                     fat = ((String) info.get(3));
 
+                    yData[0] = Float.parseFloat(carbs);
+                    yData[1] = Float.parseFloat(protein);
+                    yData[2] = Float.parseFloat(fat);
+
+                    pieChart = (PieChart) findViewById(R.id.idPieChart);
+
+                    pieChart.setRotationEnabled(true);
+
+                    pieChart.setUsePercentValues(true);
+                    //pieChart.setHoleColor(Color.BLUE);
+                    //pieChart.setCenterTextColor(Color.BLACK);
+                    pieChart.setHoleRadius(25f);
+                    pieChart.setTransparentCircleAlpha(0);
+                    pieChart.setCenterText("Macro Goals Distribution");
+                    pieChart.setCenterTextSize(10);
+                    //pieChart.setDrawEntryLabels(true);
+                    //pieChart.setEntryLabelTextSize(20);
+                    //More options just check out the documentation!
+
+                    addDataSet();
+
+//                    pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+//                        @Override
+//                        public void onValueSelected(Entry e, Highlight h) {
+//                            Log.d(TAG, "onValueSelected: Value select from chart.");
+//                            Log.d(TAG, "onValueSelected: " + e.toString());
+//                            Log.d(TAG, "onValueSelected: " + h.toString());
+//
+//                            int pos1 = e.toString().indexOf("(sum): ");
+//                            String percentage = e.toString().substring(pos1 + 3);
+//
+//                            for(int i = 0; i < yData.length; i++){
+//                                if(yData[i] == Float.parseFloat(percentage)){
+//                                    pos1 = i;
+//                                    break;
+//                                }
+//                            }
+//                            String macro = xData[pos1 + 1];
+//                            Toast.makeText(PieChartActivity.this, "Macro: " + macro + "\n" + "percantage: " + percentage + "%", Toast.LENGTH_LONG).show();
+//                        }
+//
+//                        @Override
+//                        public void onNothingSelected() {
+//
+//                        }
+//                    });
+
                 } catch (JSONException e) {
                     Toast.makeText(PieChartActivity.this, "Error1", Toast.LENGTH_SHORT).show();
                 }
@@ -80,57 +126,6 @@ public class PieChartActivity extends Activity {
                 Log.w("tag", "Failed to read value.", error.toException());
             }
         });
-
-        yData[0] = Float.parseFloat(carbs);
-        yData[1] = Float.parseFloat(protein);
-        yData[2] = Float.parseFloat(fat);
-
-
-        pieChart = (PieChart) findViewById(R.id.idPieChart);
-
-        pieChart.setRotationEnabled(true);
-
-        pieChart.setUsePercentValues(true);
-        //pieChart.setHoleColor(Color.BLUE);
-        //pieChart.setCenterTextColor(Color.BLACK);
-        pieChart.setHoleRadius(25f);
-        pieChart.setTransparentCircleAlpha(0);
-        pieChart.setCenterText("Macro Goals Distribution");
-        pieChart.setCenterTextSize(10);
-        //pieChart.setDrawEntryLabels(true);
-        //pieChart.setEntryLabelTextSize(20);
-        //More options just check out the documentation!
-
-        addDataSet();
-
-        pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-            @Override
-            public void onValueSelected(Entry e, Highlight h) {
-                Log.d(TAG, "onValueSelected: Value select from chart.");
-                Log.d(TAG, "onValueSelected: " + e.toString());
-                Log.d(TAG, "onValueSelected: " + h.toString());
-
-                int pos1 = e.toString().indexOf("(sum): ");
-                String sales = e.toString().substring(pos1 + 7);
-
-                for(int i = 0; i < yData.length; i++){
-                    if(yData[i] == Float.parseFloat(sales)){
-                        pos1 = i;
-                        break;
-                    }
-                }
-                String employee = xData[pos1 + 1];
-                Toast.makeText(PieChartActivity.this, "Employee " + employee + "\n" + "Sales: $" + sales + "K", Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onNothingSelected() {
-
-            }
-        });
-
-
-
     }
 
     private void addDataSet() {
@@ -147,7 +142,7 @@ public class PieChartActivity extends Activity {
         }
 
         //create the data set
-        PieDataSet pieDataSet = new PieDataSet(yEntrys, "Macro Percentages");
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "Macro Percentages (Carbs, Protein, Fat)");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
 

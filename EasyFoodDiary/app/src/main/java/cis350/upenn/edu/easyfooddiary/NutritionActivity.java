@@ -74,11 +74,12 @@ public class NutritionActivity extends AppCompatActivity {
     }
 
     protected void onClick(View view) {
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myref_nutrition = database.getReference("nutrition");
 
-        if (view.getId() == R.id.nutrition) {
+        //Toast.makeText(NutritionActivity.this, "hit button", Toast.LENGTH_SHORT).show();
+        if (view.getId() == R.id.Save) {
+
             editText_calories = (EditText) findViewById(R.id.calories);
             calories = editText_calories.getText().toString();
 
@@ -113,7 +114,7 @@ public class NutritionActivity extends AppCompatActivity {
             Intent i = new Intent(this, MacrosActivity.class);
             startActivity(i);
         }
-        else {
+        else if (view.getId() == R.id.displayPiChart){
             Intent i = new Intent(this, PieChartActivity.class);
             startActivity(i);
         }
