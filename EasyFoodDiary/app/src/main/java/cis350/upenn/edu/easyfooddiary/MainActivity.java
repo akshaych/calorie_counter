@@ -41,5 +41,10 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(this, CalculatorActivity.class);
             startActivity(i);
         }
+
+        else if (view.getId() == R.id.bmi) {
+            Intent i = new Intent(this, BMIActivity.class);
+            startActivity(i);
+        }
     }
 }

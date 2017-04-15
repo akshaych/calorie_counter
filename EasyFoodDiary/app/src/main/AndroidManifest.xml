@@ -76,6 +76,11 @@
             android:label="PieChartActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".BMIActivity"
+            android:label="BMIActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
