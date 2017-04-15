@@ -19,7 +19,7 @@ public class BMIActivity  extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculator);
+        setContentView(R.layout.activity_bmi);
         bmi = (TextView) findViewById(R.id.bmi);
         editText_weight = (EditText) findViewById(R.id.weight);
         editText_height = (EditText) findViewById(R.id.height);
