@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(this, InformationActivity.class);
             startActivity(i);
         }
-        else if (view.getId() == R.id.tracker) {
-            Intent i = new Intent(this, TrackerActivity.class);
+        else if (view.getId() == R.id.motivation) {
+            Intent i = new Intent(this, MotivationActivity.class);
             startActivity(i);
         }
         else if (view.getId() == R.id.calendar) {

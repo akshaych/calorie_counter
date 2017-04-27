@@ -8,13 +8,13 @@ import android.widget.TextView;
  * Created by haile on 3/24/2017.
  */
 
-public class TrackerView extends TextView {
+public class MotivationView extends TextView {
 
-    public TrackerView(Context c) {
+    public MotivationView(Context c) {
         super(c);
     }
 
-    public TrackerView(Context c, AttributeSet a) {
+    public MotivationView(Context c, AttributeSet a) {
         super(c, a);
     }
 }
