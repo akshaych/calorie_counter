@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 public class MotivationView extends TextView {
 
+    protected String quote;
+
     public MotivationView(Context c) {
         super(c);
     }
