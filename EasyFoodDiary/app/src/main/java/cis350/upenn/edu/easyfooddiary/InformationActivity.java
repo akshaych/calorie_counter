@@ -134,47 +134,51 @@ public class InformationActivity extends AppCompatActivity {
     }
 
     protected void onClick(View view) {
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myref_name = database.getReference("name");
-        DatabaseReference myref_date = database.getReference("date");
-        DatabaseReference myref_egoal = database.getReference("egoal");
-        DatabaseReference myref_wgoal = database.getReference("wgoal");
-        DatabaseReference myref_mgoal = database.getReference("mgoal");
-
-        Log.v("Setting name", "done");
-        editText_name = (EditText) findViewById(R.id.Name);
-        namer = editText_name.getText().toString();
-
-        editText_date = (EditText) findViewById(R.id.Date);
-        birthdate = editText_date.getText().toString();
-
-        editText_egoal = (EditText) findViewById(R.id.eGoal);
-        eGoal = editText_egoal.getText().toString();
-
-        editText_wgoal = (EditText) findViewById(R.id.wGoal);
-        wGoal = editText_wgoal.getText().toString();
-
-        editText_mgoal = (EditText) findViewById(R.id.mGoal);
-        mGoal = editText_mgoal.getText().toString();
-
-        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
-        try {
-            df.parse(birthdate);
-            myref_name.setValue(namer);
-            myref_date.setValue(birthdate);
-            myref_egoal.setValue(eGoal);
-            myref_wgoal.setValue(wGoal);
-            myref_mgoal.setValue(mGoal);
-
-
-            Toast.makeText(informationView.getContext(),
-                    "Your information has been saved", Toast.LENGTH_SHORT).show();
+        if (view.getId() == R.id.main) {
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
-        } catch (ParseException e) {
-            Toast.makeText(informationView.getContext(),
-                    "Please enter valid date format", Toast.LENGTH_SHORT).show();
+        } else {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myref_name = database.getReference("name");
+            DatabaseReference myref_date = database.getReference("date");
+            DatabaseReference myref_egoal = database.getReference("egoal");
+            DatabaseReference myref_wgoal = database.getReference("wgoal");
+            DatabaseReference myref_mgoal = database.getReference("mgoal");
+
+            Log.v("Setting name", "done");
+            editText_name = (EditText) findViewById(R.id.Name);
+            namer = editText_name.getText().toString();
+
+            editText_date = (EditText) findViewById(R.id.Date);
+            birthdate = editText_date.getText().toString();
+
+            editText_egoal = (EditText) findViewById(R.id.eGoal);
+            eGoal = editText_egoal.getText().toString();
+
+            editText_wgoal = (EditText) findViewById(R.id.wGoal);
+            wGoal = editText_wgoal.getText().toString();
+
+            editText_mgoal = (EditText) findViewById(R.id.mGoal);
+            mGoal = editText_mgoal.getText().toString();
+
+            DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
+            try {
+                df.parse(birthdate);
+                myref_name.setValue(namer);
+                myref_date.setValue(birthdate);
+                myref_egoal.setValue(eGoal);
+                myref_wgoal.setValue(wGoal);
+                myref_mgoal.setValue(mGoal);
+
+
+                Toast.makeText(informationView.getContext(),
+                        "Your information has been saved", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
+            } catch (ParseException e) {
+                Toast.makeText(informationView.getContext(),
+                        "Please enter valid date format", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

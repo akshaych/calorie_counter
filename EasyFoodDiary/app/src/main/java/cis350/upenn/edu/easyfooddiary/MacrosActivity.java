@@ -4,6 +4,7 @@ package cis350.upenn.edu.easyfooddiary;
  * Created by Daniel on 4/7/2017.
  */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -97,6 +98,13 @@ public class MacrosActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         //have to differentiate amongst buttons
+            //have to differentiate amongst buttons
+            if (view.getId() == R.id.main) {
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
+            }
+
+
 
     }
 }

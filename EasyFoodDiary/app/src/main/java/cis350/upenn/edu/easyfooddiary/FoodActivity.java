@@ -152,7 +152,7 @@ public class FoodActivity extends AppCompatActivity {
                 Log.w("tag", "Failed to read value.", error.toException());
             }
         });
-        myView.setText("Average Weight this Month: " + avg);
+//        myView.setText("Average Weight this Month: " + avg);
     }
 
     public void onClick(View view) {
@@ -163,24 +163,24 @@ public class FoodActivity extends AppCompatActivity {
 
         editText_weight = (EditText) findViewById(R.id.weight);
         weight = editText_weight.getText().toString();
-        Log.i("weight", initWeightEmpty + "");
-        int w = 0;
-        if (!weight.equals("")) {
-            w = Integer.parseInt(weight) - oldW;
-        }
-        if (initWeightEmpty && !weight.equals("")) {
-            denom++;
-        }
-        if (!initWeightEmpty && weight.equals("")) {
-            denom--;
-            w = oldW * -1;
-        }
-        try {
-            avg = (Integer.parseInt(avgWeight.get(0).toString()) * Integer.parseInt(avgWeight.get(1).toString()) + w) / denom;
-            //avg = (Integer.parseInt((String) avgWeight.get(0)) * Integer.parseInt((String) avgWeight.get(1)) + w)/ denom;
-        } catch (JSONException e) {
-            Toast.makeText(FoodActivity.this, "Error2", Toast.LENGTH_SHORT).show();
-        }
+//        Log.i("weight", initWeightEmpty + "");
+//        int w = 0;
+//        if (!weight.equals("")) {
+//            w = Integer.parseInt(weight) - oldW;
+//        }
+//        if (initWeightEmpty && !weight.equals("")) {
+//            denom++;
+//        }
+//        if (!initWeightEmpty && weight.equals("")) {
+//            denom--;
+//            w = oldW * -1;
+//        }
+//        try {
+//            avg = (Integer.parseInt(avgWeight.get(0).toString()) * Integer.parseInt(avgWeight.get(1).toString()) + w) / denom;
+//            //avg = (Integer.parseInt((String) avgWeight.get(0)) * Integer.parseInt((String) avgWeight.get(1)) + w)/ denom;
+//        } catch (JSONException e) {
+//            Toast.makeText(FoodActivity.this, "Error2", Toast.LENGTH_SHORT).show();
+//        }
 
         editText_breakfast = (EditText) findViewById(R.id.breakfast);
         breakfast = editText_breakfast.getText().toString();

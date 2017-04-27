@@ -49,4 +49,13 @@
         android:layout_alignStart="@+id/workoutsPerWeek"
         android:layout_marginStart="81dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main"
+        android:text="Main"
+        android:onClick="onClick"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

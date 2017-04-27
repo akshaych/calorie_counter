@@ -68,27 +68,33 @@ public class FitnessActivity extends AppCompatActivity{
     }
 
     protected void onClick(View view) {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myref_workoutsPerWeek = database.getReference("Workouts_Per_Week");
-        DatabaseReference myref_minutesPerWorkout = database.getReference("Minutes_Per_Workout");
 
-        editText_workoutsPerWeek = (EditText) findViewById(R.id.workoutsPerWeek);
-        workoutsPerWeek = editText_workoutsPerWeek.getText().toString();
-
-        editText_minutesPerWorkout = (EditText) findViewById(R.id.minutesPerWorkout);
-        minutesPerWorkout = editText_minutesPerWorkout.getText().toString();
-
-        try {
-            myref_workoutsPerWeek.setValue(workoutsPerWeek);
-            myref_minutesPerWorkout.setValue(minutesPerWorkout);
-
-            Toast.makeText(fitnessView.getContext(),
-                    "Your fitness goals have been saved", Toast.LENGTH_SHORT).show();
+        if (view.getId() == R.id.main) {
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
-        } catch (Exception e) {
-            Toast.makeText(fitnessView.getContext(),
-                    "Error", Toast.LENGTH_SHORT).show();
+        } else {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myref_workoutsPerWeek = database.getReference("Workouts_Per_Week");
+            DatabaseReference myref_minutesPerWorkout = database.getReference("Minutes_Per_Workout");
+
+            editText_workoutsPerWeek = (EditText) findViewById(R.id.workoutsPerWeek);
+            workoutsPerWeek = editText_workoutsPerWeek.getText().toString();
+
+            editText_minutesPerWorkout = (EditText) findViewById(R.id.minutesPerWorkout);
+            minutesPerWorkout = editText_minutesPerWorkout.getText().toString();
+
+            try {
+                myref_workoutsPerWeek.setValue(workoutsPerWeek);
+                myref_minutesPerWorkout.setValue(minutesPerWorkout);
+
+                Toast.makeText(fitnessView.getContext(),
+                        "Your fitness goals have been saved", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
+            } catch (Exception e) {
+                Toast.makeText(fitnessView.getContext(),
+                        "Error", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
