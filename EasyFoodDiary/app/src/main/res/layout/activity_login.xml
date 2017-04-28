@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".SignupActivity" >
+    tools:context=".LoginActivity" >
 
     <EditText
         android:id="@+id/emailField"
@@ -29,15 +29,24 @@
         android:layout_alignLeft="@+id/emailField"
         android:layout_below="@+id/emailField"
         android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Password" />
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/signupButton"
+        android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/passwordField"
         android:layout_below="@+id/passwordField"
-        android:text="Sign Up" />
+        android:text="Login" />
+
+    <TextView
+        android:id="@+id/signUpText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="69dp"
+        android:text="Signup" />
 
 </RelativeLayout>

@@ -59,6 +59,7 @@ public class NutritionActivity extends AppCompatActivity {
 
                     editText_fat.setText((String) info.get(3));
 
+
                 } catch (JSONException e) {
                     Toast.makeText(NutritionActivity.this, "Error1", Toast.LENGTH_SHORT).show();
                 }
@@ -91,6 +92,11 @@ public class NutritionActivity extends AppCompatActivity {
 
             editText_fat = (EditText) findViewById(R.id.fat);
             fat = editText_fat.getText().toString();
+
+            if (carbs.equals("")) carbs = "0";
+            if (protein.equals("")) protein = "0";
+            if (fat.equals("")) fat = "0";
+
 
             if (Integer.parseInt(carbs) + Integer.parseInt(protein) + Integer.parseInt(fat) == 100) {
 
