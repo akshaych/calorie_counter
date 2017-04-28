@@ -1,10 +1,27 @@
 package cis350.upenn.edu.easyfooddiary;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
 /**
  * Created by vamsee on 4/27/17.
  */
 
-public class SleepActivity {
+public class SleepActivity extends AppCompatActivity{
 
     protected SleepView sleepView;
     protected String date;
@@ -19,10 +36,11 @@ public class SleepActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep);
-        sleepView = new sleepView(this);
+        sleepView = new SleepView(this);
         date = getIntent().getExtras().getString("DATE");
         monthyear = getIntent().getExtras().getString("MONTHYEAR");
-        DatabaseReference myref_date = database.getReference(date + "v");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myref_date = database.getReference(date + "s");
         myref_date.addValueEventListener(new ValueEventListener() {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String s = dataSnapshot.getValue(String.class);
@@ -40,7 +58,7 @@ public class SleepActivity {
                     editText_hours.setText((String) dateInfo.get(1));
 
                 } catch (JSONException e) {
-                    Toast.makeText(FoodActivity.this, "Error1", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SleepActivity.this, "Error1", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -49,12 +67,12 @@ public class SleepActivity {
                 // Failed to read value
                 Log.w("tag", "Failed to read value.", error.toException());
             }
-        }
-
+        });
     }
 
     public void onClick(View view) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myref_date = database.getReference(date + "s");
         editText_bedtime = (EditText) findViewById(R.id.bedtime);
         bedtime = editText_bedtime.getText().toString();
 
@@ -63,9 +81,16 @@ public class SleepActivity {
 
         try {
             dateInfo.put(0, bedtime);
-            datInfo.put(1, hours);
+            dateInfo.put(1, hours);
+            myref_date.setValue(dateInfo.toString());
+            Toast.makeText(sleepView.getContext(),
+                    "Saved", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this, CalendarActivity.class);
+            i.putExtra("Type","sleep");
+            startActivity(i);
+
         } catch (JSONException e) {
-            Toast.makeText(FoodActivity.this, "Error2", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SleepActivity.this, "Error2", Toast.LENGTH_SHORT).show();
         }
 
     }

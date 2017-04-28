@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    tools:context="cis350.upenn.edu.easyfooddiary.SleepActivity">
 
-</LinearLayout>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:text=""
+        android:ems="10"
+        android:hint="Bedtime"
+        android:id="@+id/bedtime"
+        android:layout_marginTop="113dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text=""
+        android:ems="10"
+        android:hint="Hours"
+        android:id="@+id/hours"
+        android:layout_below="@+id/bedtime"
+        android:layout_alignStart="@+id/bedtime" />
+
+    <Button
+        android:text="Save"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/Save"
+        android:onClick="onClick"
+        android:layout_below="@+id/hours"
+        android:layout_alignStart="@+id/hours" />
+
+</RelativeLayout>
