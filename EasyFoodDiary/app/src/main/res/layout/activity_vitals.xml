@@ -32,8 +32,7 @@
         android:inputType="number"
         android:id="@+id/bpd"
         android:layout_marginStart="36dp"
-        android:layout_below="@+id/bps"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/bps"/>
 
     <EditText
         android:layout_width="wrap_content"
