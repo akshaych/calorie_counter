@@ -47,8 +47,8 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".MonthCalendarActivity"
-            android:label="MonthCalendarActivity"
+            android:name=".VitalsActivity"
+            android:label="VitalsActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
