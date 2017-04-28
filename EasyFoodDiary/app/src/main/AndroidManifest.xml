@@ -42,8 +42,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TrackerActivity"
-            android:label="TrackerActivity"
+            android:name=".MotivationActivity"
+            android:label="MotivationActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
