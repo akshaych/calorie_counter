@@ -6,4 +6,24 @@
     android:weightSum="1"
     tools:context="cis350.upenn.edu.easyfooddiary.VitalsActivity">
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:text=""
+        android:ems="10"
+        android:hint="Bedtime"
+        android:id="@+id/bedtime"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text=""
+        android:ems="10"
+        android:hint="Hours"
+        android:id="@+id/hours"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

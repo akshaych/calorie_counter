@@ -21,7 +21,7 @@ public class CalendarActivity extends AppCompatActivity {
         CalendarView view = (CalendarView) findViewById(R.id.calendar);
         long date = Calendar.getInstance().getTimeInMillis();
         view.setDate(date);
-        String type = getIntent().getExtras().getString("Type");
+        final String type = getIntent().getExtras().getString("Type");
         view.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
