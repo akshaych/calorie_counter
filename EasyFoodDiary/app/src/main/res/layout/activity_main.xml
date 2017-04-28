@@ -83,6 +83,26 @@
         android:layout_alignBottom="@+id/your_information"
         android:layout_alignParentEnd="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sleep"
+        android:text="Sleep"
+        android:onClick="onClick"
+        android:layout_alignBaseline="@+id/nutrition"
+        android:layout_alignBottom="@+id/nutrition"
+        android:layout_alignStart="@+id/calendar" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id = "@+id/vitals"
+        android:text= "Vitals"
+        android:onClick= "onClick"
+        android:layout_above="@+id/nutrition"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="50dp" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
