@@ -6,4 +6,60 @@
     android:weightSum="1"
     tools:context="cis350.upenn.edu.easyfooddiary.VitalsActivity">
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Heart Rate (bpm)"
+        android:inputType="number"
+        android:id="@+id/hr"
+        android:layout_marginTop="47dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/bpd" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Blood Pressure - Systolic (mm Hg)"
+        android:inputType="number"
+        android:id="@+id/bps"
+        android:layout_below="@+id/hr"
+        android:layout_alignStart="@+id/hr" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Blood Pressure - Diastolic (mm Hg)"
+        android:inputType="number"
+        android:id="@+id/bpd"
+        android:layout_marginStart="36dp"
+        android:layout_below="@+id/bps"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Body Temperature (degrees Fahrenheit)"
+        android:inputType="numberDecimal"
+        android:id="@+id/bt"
+        android:layout_below="@+id/bpd"
+        android:layout_alignStart="@+id/bpd" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Respiratory Rate (bpm)"
+        android:inputType="number"
+        android:id="@+id/rr"
+        android:layout_below="@+id/bt"
+        android:layout_alignStart="@+id/bt" />
+
+    <Button
+    android:text="Save"
+    android:layout_width="145dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/Save"
+    android:onClick="onClick"
+        android:layout_below="@+id/rr"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

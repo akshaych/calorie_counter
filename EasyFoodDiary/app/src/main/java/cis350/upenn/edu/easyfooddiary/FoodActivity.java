@@ -125,33 +125,33 @@ public class FoodActivity extends AppCompatActivity {
                 Log.w("tag", "Failed to read value.", error.toException());
             }
         });
-        DatabaseReference myref_my = database.getReference(monthyear);
-        myref_my.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String s = dataSnapshot.getValue(String.class);
-                try {
-                    if (s == null) {
-                        int[] arr = {0, 0};
-                        avgWeight = new JSONArray(arr);
-                    } else {
-                        avgWeight = new JSONArray(s);
-                    }
-                    avg = Integer.parseInt(avgWeight.get(0).toString());
-                    denom = Integer.parseInt(avgWeight.get(1).toString());
-                } catch (JSONException e) {
-                    Toast.makeText(FoodActivity.this, "Error3", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w("tag", "Failed to read value.", error.toException());
-            }
-        });
+//        DatabaseReference myref_my = database.getReference(monthyear);
+//        myref_my.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                String s = dataSnapshot.getValue(String.class);
+//                try {
+//                    if (s == null) {
+//                        int[] arr = {0, 0};
+//                        avgWeight = new JSONArray(arr);
+//                    } else {
+//                        avgWeight = new JSONArray(s);
+//                    }
+//                    avg = Integer.parseInt(avgWeight.get(0).toString());
+//                    denom = Integer.parseInt(avgWeight.get(1).toString());
+//                } catch (JSONException e) {
+//                    Toast.makeText(FoodActivity.this, "Error3", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                // Failed to read value
+//                Log.w("tag", "Failed to read value.", error.toException());
+//            }
+//        });
 //        myView.setText("Average Weight this Month: " + avg);
     }
 
@@ -232,10 +232,10 @@ public class FoodActivity extends AppCompatActivity {
             dateInfo.put(10, snack2Calories);
             dateInfo.put(11, snack3);
             dateInfo.put(12, snack3Calories);
-            avgWeight.put(0, avg);
-            avgWeight.put(1, denom);
+//            avgWeight.put(0, avg);
+//            avgWeight.put(1, denom);
             myref_date.setValue(dateInfo.toString());
-            myref_my.setValue(avgWeight.toString());
+//            myref_my.setValue(avgWeight.toString());
             Toast.makeText(foodView.getContext(),
                     "Saved", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, CalendarActivity.class);
