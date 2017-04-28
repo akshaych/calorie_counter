@@ -21,15 +21,32 @@ public class CalendarActivity extends AppCompatActivity {
         CalendarView view = (CalendarView) findViewById(R.id.calendar);
         long date = Calendar.getInstance().getTimeInMillis();
         view.setDate(date);
+        String type = getIntent().getExtras().getString("Type");
         view.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                Intent i = new Intent(CalendarActivity.this, FoodActivity.class);
-                int month_add;
-                month_add = month + 1;
-                i.putExtra("DATE", month_add + "," + dayOfMonth + "," + year);
-                i.putExtra("MONTHYEAR", month_add + "," + year);
-                view.getContext().startActivity(i);
+                if (type.equals("calendar")) {
+                    Intent i = new Intent(CalendarActivity.this, FoodActivity.class);
+                    int month_add;
+                    month_add = month + 1;
+                    i.putExtra("DATE", month_add + "," + dayOfMonth + "," + year);
+                    i.putExtra("MONTHYEAR", month_add + "," + year);
+                    view.getContext().startActivity(i);
+                } else if (type.equals("vitals")) {
+                    Intent i = new Intent(CalendarActivity.this, VitalsActivity.class);
+                    int month_add;
+                    month_add = month + 1;
+                    i.putExtra("DATE", month_add + "," + dayOfMonth + "," + year);
+                    i.putExtra("MONTHYEAR", month_add + "," + year);
+                    view.getContext().startActivity(i);
+                } else {
+                    Intent i = new Intent(CalendarActivity.this, SleepActivity.class);
+                    int month_add;
+                    month_add = month + 1;
+                    i.putExtra("DATE", month_add + "," + dayOfMonth + "," + year);
+                    i.putExtra("MONTHYEAR", month_add + "," + year);
+                    view.getContext().startActivity(i);
+                }
             }
         });
     }

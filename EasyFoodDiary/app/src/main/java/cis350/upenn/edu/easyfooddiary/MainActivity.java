@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (view.getId() == R.id.calendar) {
             Intent i = new Intent(this, CalendarActivity.class);
+            i.putExtra("Type":"calendar");
             startActivity(i);
         }
         else if (view.getId() == R.id.fitness_goals) {
@@ -44,6 +45,16 @@ public class MainActivity extends AppCompatActivity {
 
         else if (view.getId() == R.id.bmi) {
             Intent i = new Intent(this, BMIActivity.class);
+            startActivity(i);
+        }
+        else if (view.getId() == R.id.vitals) {
+            Intent i = new Intent(this, CalendarActivity.class);
+            i.putExtra("Type":"vitals");
+            startActivity(i);
+        }
+        else if (view.getId() == R.id.sleep) {
+            Intent i = new Intent(this, CalendarActivity.class);
+            i.putExtra("Type":"sleep");
             startActivity(i);
         }
     }
